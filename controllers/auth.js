@@ -7,11 +7,6 @@ const crypto = require('crypto'); // For generating OTP
 const storage = multer.memoryStorage(); // Store image in memory
 const upload = multer({ storage });
 
-module.exports.renderSignupPage = (req, res) => {
-    res.send("Signup Form");
-    // res.render("users/signup.ejs");
-};
-
 module.exports.registerUser = (req, res) => {
     res.send("Register User post request");
 };

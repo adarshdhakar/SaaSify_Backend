@@ -10,10 +10,11 @@ const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-
+const User = require('./models/user.js');
 const authRouter = require("./routes/auth.js");
 
 // CORS middleware
+console.log(process.env.FRONTEND_URL);
 const corsOptions = {
     origin: process.env.FRONTEND_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -44,7 +45,7 @@ const store = MongoStore.create({
   touchAfter: 24 * 3600,
 });
 
-store.on("error", () => {
+store.on("error", (err) => {
   console.log("ERROR in MONGO SESSION STORE", err);
 });
 
